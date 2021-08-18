@@ -1,8 +1,8 @@
 import random
 from datetime import datetime
+from io import StringIO
 from google.cloud import storage
 from google.oauth2 import service_account
-import json
 import streamlit as st
 import geocoder
 import networkx as nx
@@ -111,7 +111,17 @@ def read_secret():
 
 def read_data(bucket_name, source_blob_name):
     # read in data from csv to df
-    return pd.read_csv("http://storage.cloud.google.com/{}/{}".format(bucket_name, source_blob_name))
+    credentials = read_secret()
+    storage_client = storage.Client(credentials=credentials)
+    bucket = storage_client.get_bucket(bucket_name)
+
+    blob = bucket.blob(source_blob_name)
+    string = blob.download_as_string()
+    decode = string.decode('utf-8')
+
+    str_io = StringIO(decode)  # tranform bytes to string here
+
+    return pd.read_csv(str_io, sep=",")  # then use csv library to read the content
 
 
 def update_data(filename):
