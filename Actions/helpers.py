@@ -111,7 +111,7 @@ def read_secret():
 
 def read_data(bucket_name, source_blob_name):
     # read in data from csv to df
-    return pd.read_csv("http://storage.googleapis.com/{}/{}".format(bucket_name, source_blob_name))
+    return pd.read_csv("http://storage.cloud.google.com/{}/{}".format(bucket_name, source_blob_name))
 
 
 def update_data(filename):
