@@ -103,8 +103,7 @@ def read_secret():
         dictionary = {type_[0]: type_[1], project_id[0]: project_id[1], private_key_id[0]: private_key_id[1],
                       private_key[0]: private_key[1], client_email[0]: client_email[1], client_id[0]: client_id[1],
                       auth_uri[0]: auth_uri[1], token_uri[0]: token_uri[1], auth[0]: auth[1], client[0]: client[1]}
-
-        return dictionary
+        return service_account.Credentials.from_service_account_file(dictionary)
     except:
         return service_account.Credentials.from_service_account_file("gvdashboards-e481433de9af.json")
 
