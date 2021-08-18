@@ -115,7 +115,7 @@ def read_data(bucket_name, source_blob_name):
 
 
 def update_data(filename):
-    credentials = service_account.Credentials.from_service_account_file("gvdashboards-e481433de9af.json")
+    credentials = read_secret()
     client = storage.Client(credentials=credentials, project="gvdashboards")
     bucket = client.get_bucket("urcool")
     blob = bucket.blob(filename)
