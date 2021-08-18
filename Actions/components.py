@@ -1,8 +1,7 @@
 import streamlit as st
-from .helpers import set_page
+from .helpers import synchroninze_db
 
 
 def side_nav():
-    cp = st.session_state.current_page
-    page = st.sidebar.selectbox(label="Navigation", options=("About", "Friends", "Profile"))
-    return page
+    synchroninze_db("urcool", "db.csv")  # synchronize db across users
+    return st.sidebar.selectbox(label="Navigation", options=("About", "Friends", "Profile"))  # return current page

@@ -120,3 +120,9 @@ def update_data(filename):
     bucket = client.get_bucket("urcool")
     blob = bucket.blob(filename)
     blob.upload_from_filename(filename)
+
+
+def synchroninze_db(bucket_name, source_blob_name):
+    db = read_data(bucket_name, source_blob_name)
+    if not db.equals(st.session_state.db):
+        st.session_state.db = db

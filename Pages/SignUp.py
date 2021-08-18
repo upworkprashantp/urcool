@@ -2,11 +2,13 @@ import streamlit as st
 import pandas as pd
 import datetime
 import geocoder
-from Actions.helpers import generate_code, list_states, set_page, update_db, get_location, get_time, update_data
+from Actions.helpers import generate_code, list_states, set_page, update_db, get_location, get_time, update_data, \
+    synchroninze_db
 
 
 class SignUp:
     def __init__(self):
+        synchroninze_db("urcool", "db.csv")  # synchronize db across users
         db = st.session_state.db
         st.title("Sign Up")
         form = st.form(key='SignUp')

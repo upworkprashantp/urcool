@@ -1,10 +1,11 @@
 import streamlit as st
 import datetime
-from Actions.helpers import set_page, update_db, get_location, update_data
+from Actions.helpers import set_page, update_db, get_location, update_data, synchroninze_db
 
 
 class Login:
     def __init__(self):
+        synchroninze_db("urcool", "db.csv")  # synchronize db across users
         db = st.session_state.db
         st.title("Login")
         form = st.form(key='Login')
