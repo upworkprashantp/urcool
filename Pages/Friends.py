@@ -41,7 +41,7 @@ class Friends:
         # add friends
         expander = st.expander("Add Friends")
         form = expander.form("Add")
-        col1, col2 = form.beta_columns(2)
+        col1, col2 = form.columns(2)
         # get second degree friends.
         curr_user = st.session_state.current_user
         friends_of_friends = get_friends_by_distance(st.session_state.graph, curr_user.ID.item(), 2, strict=True)
@@ -70,8 +70,8 @@ class Friends:
     def filter(self, viz):
         # filter visible df
         expander = st.expander(label="Filter")
-        col1, col2 = expander.beta_columns(2)
-        col3, col4, col5 = expander.beta_columns(3)
+        col1, col2 = expander.columns(2)
+        col3, col4, col5 = expander.columns(3)
         # options to select from
         state = col1.selectbox("Home State", ["All"] + list(viz["Home State"].dropna().unique()))
         city = col2.selectbox("Home City", ["All"] + list(viz["Home City"].dropna().unique()))

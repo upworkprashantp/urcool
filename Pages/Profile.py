@@ -41,7 +41,7 @@ class Profile:
         #  make expander and form with selectbox of Friend Requesters
         expander = st.expander("Answer requests")
         form = expander.form("Answer_requests")
-        col1, col2 = form.beta_columns(2)
+        col1, col2 = form.columns(2)
         name = col1.selectbox("People", requests.SenderName.unique())
 
         def confirm_request():
@@ -72,7 +72,7 @@ class Profile:
     def change_info(self, viz_user):
         expander = st.expander("Edit your info")
         form = expander.form("edit")
-        col1, col2 = form.beta_columns(2)
+        col1, col2 = form.columns(2)
         cat = col1.selectbox("Column", viz_user.columns.unique())  # category to change
         info = col2.text_input("New info")
 
